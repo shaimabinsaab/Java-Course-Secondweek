@@ -1,0 +1,68 @@
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc =new Scanner(System.in);
+        try {
+
+            System.out.println("enter the size of your array");
+            int arrsize = sc.nextInt();
+
+            int[] array = new int[arrsize];
+            System.out.println("enter the element ");
+            for (int i = 0; i < array.length; i++) {
+                array[i] = sc.nextInt();
+            }
+
+
+            System.out.println("enter the 1-to display your array 2-to search for an element 3-to sort your array -1 to e");
+            int menu = sc.nextInt();
+            while (menu != -1) {
+                System.out.println("enter the 1-to display your array 2-to search for an element 3-to sort your array -1 to e");
+                menu = sc.nextInt();
+                try {
+                    switch (menu) {
+                        case 1:
+                            System.out.println("your array " + Arrays.toString(array));
+                            break;
+                        case 2:
+                            System.out.println("enter the element that you want to find within the array");
+                            int search = sc.nextInt();
+                            for (int i = 0; i < array.length; i++) {
+                                if (array[i] == search) {
+                                    System.out.println("it is here: " + search + " with index number: " + i);
+                                }
+                            }
+                            break;
+                        case 3:
+                            Arrays.sort(array);
+                            System.out.print("your array sorted: " + Arrays.toString(array));
+                            break;
+                    }
+                }
+                    catch (InputMismatchException e) {
+                        System.out.println(e.getMessage());
+                    }
+
+
+
+
+            }
+
+            }catch(InputMismatchException e){
+            System.out.println("enter only number");
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
+        }
+
+
+
+
+
+
+    }
+}
